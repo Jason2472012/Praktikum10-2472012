@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ToDoList-2472012</title>
+    <script src="jquery.min.js"></script>
 
     <style>
         body{
@@ -42,8 +43,33 @@
             background-color: rgb(225,227,135);
             border-radius: 5px;
         }
-
         
+        .list{
+            border:  1px solid rgb(0, 73, 92);
+            border-radius: 5px;
+            height: 30px;
+            width: 250px;
+            }
+        table{
+            width: 300px;
+            margin-right: 30px;
+            }
+        td{
+            max-width: 200px;
+            text-align: right;
+            word-wrap: break-word;
+            width: 200px;
+            height: 30px;
+        }
+        
+        .hapus:hover{
+            background-color: green;
+            height: 25px;
+            width:  25px;
+            float: right;
+            padding-right: 2px;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -59,11 +85,56 @@
 
         <table id="task-list">
             <tbody>
-
+                <tr>
+                    <td class="kiri"></td>
+                    <td class="kanan"></td>
+                </tr>
             </tbody>
         </table>
-
     </div>
 
+    <script>
+        $(document).ready(function () {
+            let list = [];
+
+            function hasilList() {
+                let tbody = $('#task-list tbody');
+                tbody.empty();
+
+                for (let i = 0; i < list.length; i++) {
+                    let row = $(`<tr><td>${list[i]}</td><td><div class="hapus">✅</div></td></tr>`);
+                    row.hide().appendTo(tbody).fadeIn(400);
+                }
+            }
+
+            $('#task-form').submit(function (e) {
+                e.preventDefault();
+                const task = $('#task-input').val().trim();
+                if (task === "") {
+                    return;
+                }
+                if (list.length >= 10) {
+                    alert("Maximum of 10 tasks allowed");
+                    return;
+                }
+                list.push(task);
+                $('#task-input').val("");
+                hasilList();
+            });
+
+            $('#clear-btn').click(function () {
+                list = [];
+                hasilList();
+            });
+
+            $('#task-list').on('click', '.hapus', function () {
+                const isiTugas = $(this).closest('tr').find('td:first').text().trim();
+                list = list.filter(t => t !== isiTugas);
+                hasilList();
+            });
+
+            hasilList();
+        });
+    </script>
 </body>
 </html>

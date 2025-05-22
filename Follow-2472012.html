@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Follow-2472012</title>
+    <script src="jquery.min.js"></script>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        .content {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        table {
+            border-collapse: collapse;
+            margin: auto;
+            border: 3px solid black;
+        }
+        td {
+            width: 50px;
+            height: 50px;
+        }
+       
+        .hijau, .hijauki, .hijauk, .hijaub { 
+            background-color: white; 
+        }
+        .merah, .merahb, .merahk, .meraha, .merahka, .merahkat { 
+            background-color: grey; 
+        }
+        #selesai, #mulai { 
+            background-color: white; 
+        }
+        #selesai { 
+            border-bottom: 4px solid grey; 
+        }
+        #mulai { 
+            border-top: 4px solid grey; 
+        }
+        .hijauki { 
+            border-left: 4px dashed grey; 
+        }
+        .hijauk { 
+            border-right: 4px dashed grey; 
+        }
+        .merahb { 
+            border-bottom: 4px dashed grey; 
+        }
+        .merahk { 
+            border-left: 4px dashed grey; 
+        }
+        .meraha { 
+            border-top: 4px dashed grey; 
+        }
+        .hijaub { 
+            border-bottom: 4px dashed grey; 
+        }
+        .merahka { 
+            border-right: 4px dashed grey; 
+        }
+        .merahkat { 
+            border-left: 4px dashed grey; 
+            border-bottom: 4px dashed grey; 
+        }
+    </style>
+</head>
+<body></body>
+    <div class="container">
+        <div class="content">
+            <table>
+                <tr>
+                    <td colspan="6" id="selesai"><h1>FINISH</h1></td>
+                </tr>
+                <tr>
+                    <td class="hijauk"></td>
+                    <td class="merah salah"></td>
+                    <td class="merah salah"></td>
+                    <td class="merah salah"></td>
+                    <td class="merah salah"></td>
+                    <td class="merah salah"></td>
+                </tr>
+                <tr>
+                    <td class="hijauk"></td>
+                    <td class="merahb salah"></td>
+                    <td class="merahb salah"></td>
+                    <td class="merah salah"></td>
+                    <td class="merah salah"></td>
+                    <td class="merah salah"></td>
+                </tr>
+                <tr>
+                    <td class="hijau"></td>
+                    <td class="hijau"></td>
+                    <td class="hijau"></td>
+                    <td class="merahk salah"></td>
+                    <td class="merah salah"></td>
+                    <td class="merah salah"></td>
+                </tr>
+                <tr>
+                    <td class="meraha salah"></td>
+                    <td class="meraha salah"></td>
+                    <td class="hijauki"></td>
+                    <td class="merahkat salah"></td>
+                    <td class="merahb salah"></td>
+                    <td class="merahb salah"></td>
+                </tr>
+                <tr>
+                    <td class="merah salah"></td>
+                    <td class="merahka salah"></td>
+                    <td class="hijaub"></td>
+                    <td class="hijaub"></td>
+                    <td class="hijaub"></td>
+                    <td class="hijauk"></td>
+                </tr>
+                <tr>
+                    <td colspan="6" id="mulai"><h1>START</h1></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+    
+        $(".hijau, .hijauki, .hijauk, .hijaub").hover(
+            function() { $(this).css("background-color", "green"); },
+            function() { $(this).css("background-color", "white"); }
+        );
+      
+        $(".merah, .merahb, .merahk, .meraha, .merahka, .merahkat").hover(
+            function() { $(this).css("background-color", "red"); },
+            function() { $(this).css("background-color", "grey"); }
+        );
+       
+        $("#selesai").hover(
+            function() { $(this).css("background-color", "yellow"); },
+            function() { $(this).css("background-color", "white"); }
+        );
+       
+        $("#mulai").hover(
+            function() { $(this).css("background-color", "blue"); },
+            function() { $(this).css("background-color", "white"); }
+        );
+        
+        $(".salah").mouseenter(function(){
+            setTimeout(() => { alert("you lose!"); }, 50);
+        });
+        
+        $("#selesai").mouseenter(function(){
+            setTimeout(() => { alert("congrats!"); }, 50);
+        });
+    </script>
+</body>
+</html>
